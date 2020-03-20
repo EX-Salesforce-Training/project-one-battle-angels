@@ -1,0 +1,9 @@
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body style="height: auto; min-height: auto;">
+  Dearest {{{Recipient.Name}}}, 
+  <br /> This missing package has a value greater than our $100 threshold for automatic approval, thus it has been sent to be approved by you oh wise one.
+ </body>
+</html>
