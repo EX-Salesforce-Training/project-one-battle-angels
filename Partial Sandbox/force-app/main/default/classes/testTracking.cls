@@ -4,7 +4,7 @@ public class testTracking {
     	public static void testTrackingTest(){
     		Contact cont = new Contact(LastName='Saruman');
     		Address__c addr = new Address__c( Name = '1120 Boolean Road',
-                                     City__c='Moscow', State__c='Idaho', 
+                                     City__c='Moscow', State__c='ID', 
                                      Zip_Code__c = '99163');
     		insert cont;
     		insert addr;
