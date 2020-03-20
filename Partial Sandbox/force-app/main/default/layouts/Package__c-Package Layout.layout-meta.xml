@@ -24,6 +24,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+<<<<<<< HEAD
                 <field>Fragile__c</field>
             </layoutItems>
             <layoutItems>
@@ -37,6 +38,9 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Weight__c</field>
+=======
+                <field>Tracking_Number__c</field>
+>>>>>>> d4cf437ea3950a8246c674c418515c85f45e8153
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
