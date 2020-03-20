@@ -1,0 +1,4 @@
+Dearest {{{Recipient.Name}}},
+Missing package {!Package__c.Name} has a value of {!Package__c.Value__c} and has been submitted for insurance payout approval.
+Sincerely, 
+{{{Sender.Name}}}
