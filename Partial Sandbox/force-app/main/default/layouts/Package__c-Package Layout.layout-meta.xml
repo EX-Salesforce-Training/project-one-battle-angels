@@ -11,8 +11,13 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
+<<<<<<< HEAD
                 <behavior>Edit</behavior>
                 <field>Value__c</field>
+=======
+                <behavior>Required</behavior>
+                <field>Inhabitant__c</field>
+>>>>>>> akeemsbranch
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
