@@ -8,6 +8,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Package__c.Fragile__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Package__c.Height__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Package__c.Payout_Approved__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -19,6 +29,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Package__c.Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Package__c.Weight__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Package__c.Width__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
