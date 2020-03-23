@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Tracking_Number__c</fullName>
-    <caseSensitive>false</caseSensitive>
+    <businessStatus>Active</businessStatus>
     <description>A randomly generated tracking number which resists any guessing attempts for security purposes.</description>
     <externalId>false</externalId>
     <label>Tracking Number</label>
@@ -9,5 +9,5 @@
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>
-    <unique>true</unique>
+    <unique>false</unique>
 </CustomField>
