@@ -26,15 +26,19 @@
     </types>
     <types>
         <members>*</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>*</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>
         <members>*</members>
         <name>StaticResource</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ListView</name>
+    </types>   
     <version>47.0</version>
 </Package>
