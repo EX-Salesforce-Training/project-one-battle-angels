@@ -1,0 +1,15 @@
+<apex:page standardController="Package__c" recordSetVar="Packages">
+    <apex:form >
+    <apex:pageBlock title="Package List" id="Package_List">
+    	<apex:selectList value="{!filterId}" size="1">
+        	<apex:selectOptions value="{! listViewOptions }"/>
+     		<apex:actionSupport event="onchange" reRender="Package_List"/>
+   	 </apex:selectList>
+        <apex:pageBlockTable value="{!Package__c}" var="pg">
+            <apex:column value="{!pg.Name}"/>
+            <apex:column value="{!pg.Shipping_Status__c}"/>
+            <apex:column value="{!pg.Tracking_Number__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+   </apex:form>
+</apex:page>
