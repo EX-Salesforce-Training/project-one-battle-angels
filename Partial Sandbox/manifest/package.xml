@@ -40,5 +40,9 @@
         <members>*</members>
         <name>ListView</name>
     </types>   
+    <types>
+        <members>*</members>
+        <name>Report</name>
+    </types>   
     <version>47.0</version>
 </Package>
