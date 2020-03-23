@@ -5,6 +5,7 @@
 # Salesforce cache
 .sfdx/
 .localdevserver/
+force-app\main\default\profiles\
 
 # Logs
 logs

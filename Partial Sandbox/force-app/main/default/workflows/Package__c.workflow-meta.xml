@@ -27,4 +27,28 @@
         <operation>Literal</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Delivery_Date</fullName>
+        <description>Sets the delivery date to be equal to the date when it was (set to) delivered.</description>
+        <field>Delivery_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Set Delivery Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>Package Delivered</fullName>
+        <actions>
+            <name>Set_Delivery_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Package__c.Shipping_Status__c</field>
+            <operation>equals</operation>
+            <value>Delivered</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
 </Workflow>
