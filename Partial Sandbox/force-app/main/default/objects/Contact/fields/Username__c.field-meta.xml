@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Username__c</fullName>
+    <caseSensitive>true</caseSensitive>
+    <defaultValue>$User.FirstName &amp; $User.LastName &amp; &quot;@&quot; &amp;  $Organization.Name &amp; &quot;.com&quot;</defaultValue>
+    <description>Create a unique username to allow access to records.</description>
+    <externalId>false</externalId>
+    <label>Username</label>
+    <length>80</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>
