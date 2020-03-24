@@ -1,0 +1,9 @@
+<apex:page standardController="Account" recordsetVar="Contacts">
+    <apex:pageBlock>
+        <apex:pageBlockSection>
+            <apex:form>
+
+            </apex:form>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

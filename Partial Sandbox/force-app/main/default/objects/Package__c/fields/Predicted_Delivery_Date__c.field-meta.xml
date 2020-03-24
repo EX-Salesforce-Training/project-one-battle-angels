@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Predicted_Delivery_Date__c</fullName>
+    <description>The predicted date this package is due to be delivered. For use in reports which highlight our forecasting ability.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When is this package due to arrive at its destination?</inlineHelpText>
+    <label>Predicted Delivery Date</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>
