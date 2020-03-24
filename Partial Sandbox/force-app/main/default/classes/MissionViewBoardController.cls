@@ -7,8 +7,7 @@ public class MissionViewBoardController
     {
         user = [SELECT Account.Name, FirstName, LastName 
                 FROM Contact 
-                WHERE (FirstName =: UserInfo.getFirstName() AND LastName =: UserInfo.getLastName())
-              	AND Email =: UserInfo.getUserEmail()];
+                WHERE UserName__c =: UserInfo.getUserName()];
         
         userAccount = new Account(Id = user.AccountId, Name = user.Account.Name);
     }
