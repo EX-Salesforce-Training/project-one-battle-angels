@@ -1,4 +1,4 @@
-<apex:page controller="PackageList">
+<apex:page controller="PastList">
     <apex:form >
         <apex:pageBlock title="Package List" id="Package_list">
     <apex:pageBlockTable value="{! Packages }" var="pg">
