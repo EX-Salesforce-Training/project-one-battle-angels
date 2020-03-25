@@ -1,3 +1,7 @@
 <apex:page controller="MissionViewBoardController">
     
+    <apex:form >
+        <apex:pageBlock >
+        </apex:pageBlock>
+    </apex:form>
 </apex:page>
