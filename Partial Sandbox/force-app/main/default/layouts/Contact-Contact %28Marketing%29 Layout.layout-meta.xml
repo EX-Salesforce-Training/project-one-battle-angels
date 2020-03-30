@@ -39,7 +39,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>UserName__c</field>
+                <field>User_Name__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

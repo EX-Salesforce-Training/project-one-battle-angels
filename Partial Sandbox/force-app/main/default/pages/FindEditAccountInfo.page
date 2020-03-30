@@ -1,59 +1,69 @@
 <apex:page standardController="Account">
-    <apex:pageBlock >
-        <apex:pageBlockSection >
-            <apex:form >
-                <apex:pageBlock >
-                    <apex:pageBlockSection title="Company Name">
-                    <p>Current:</p> <apex:outputField value="{!Account.Name}" label="Company Name"/>
-                    <p>New:</p> <apex:inputField value="{!Account.Name}" label=""/>  
-                    </apex:pageBlockSection>
-                    <apex:pageBlockSection title="Contact Information">
-                        <p>Current:</p> <apex:outputField value="{!Account.Website}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.Website}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.Phone}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.Phone}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.Fax}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.Fax}" label=""/>
-                    </apex:pageBlockSection>
-                    <apex:pageBlockSection title="Billing Address">
-                        <p>Current:</p> <apex:outputField value="{!Account.BillingStreet}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.BillingStreet}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.BillingCity}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.BillingCity}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.BillingState}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.BillingState}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.BillingPostalCode}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.BillingPostalCode}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.BillingCountry}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.BillingCountry}" label=""/>
-                    </apex:pageBlockSection>
-                    <apex:pageBlockSection title="Shipping Address">
-                        <p>Current:</p> <apex:outputField value="{!Account.ShippingStreet}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.ShippingStreet}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.ShippingCity}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.ShippingCity}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.ShippingState}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.ShippingState}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.ShippingPostalCode}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.ShippingPostalCode}" label=""/>
-                        <br/>
-                        <p>Current:</p> <apex:outputField value="{!Account.ShippingCountry}"/>
-                        <p>New:</p> <apex:inputField value="{!Account.ShippingCountry}" label=""/>
-                    </apex:pageBlockSection>
-                    <apex:pageBlockButtons >
-                        <apex:commandButton value="Save" action="{!save}"/>
-                    </apex:pageBlockButtons>
-                </apex:pageBlock>
-            </apex:form>
-        </apex:pageBlockSection>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Company Name">
+                <apex:outputField value="{!Account.Name}" label="Company Name"/>
+                <apex:inputField value="{!Account.Name}" label=""/>  
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Contact Information" columns="3">
+                <apex:pageBlockSection>
+                    <apex:outputField value="{!Account.Website}"/> <br/>
+                    <apex:inputField value="{!Account.Website}" label=""/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection>
+                    <apex:outputField value="{!Account.Phone}"/> <br/>
+                    <apex:inputField value="{!Account.Phone}" label=""/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection>
+                    <apex:outputField value="{!Account.Fax}"/> <br/>
+                    <apex:inputField value="{!Account.Fax}" label=""/>
+                </apex:pageBlockSection>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Billing Address" columns="2">
+                <apex:pageBlockSection>
+                    <apex:outputField value="{!Account.BillingStreet}"/> <br/>
+                    <apex:inputField value="{!Account.BillingStreet}" label=""/>
+                    
+                    <apex:outputField value="{!Account.BillingCity}"/> <br/>
+                    <apex:inputField value="{!Account.BillingCity}" label=""/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection>
+                    <apex:outputField value="{!Account.BillingState}"/> <br/>
+                    <apex:inputField value="{!Account.BillingState}" label=""/>
+                    
+                    <apex:outputField value="{!Account.BillingPostalCode}"/> <br/>
+                    <apex:inputField value="{!Account.BillingPostalCode}" label=""/>
+                    
+                    <apex:outputField value="{!Account.BillingCountry}"/> <br/>
+                    <apex:inputField value="{!Account.BillingCountry}" label=""/>
+                </apex:pageBlockSection>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Shipping Address" columns="2">
+                <apex:pageBlockSection>
+                    <apex:outputField value="{!Account.ShippingStreet}"/> <br/>
+                    <apex:inputField value="{!Account.ShippingStreet}" label=""/>
+                    
+                    <apex:outputField value="{!Account.ShippingCity}"/> <br/>
+                    <apex:inputField value="{!Account.ShippingCity}" label=""/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection>
+                    <apex:outputField value="{!Account.ShippingState}"/> <br/>
+                    <apex:inputField value="{!Account.ShippingState}" label=""/>
+                    
+                    <apex:outputField value="{!Account.ShippingPostalCode}"/> <br/>
+                    <apex:inputField value="{!Account.ShippingPostalCode}" label=""/>
+                    
+                    <apex:outputField value="{!Account.ShippingCountry}"/> <br/>
+                    <apex:inputField value="{!Account.ShippingCountry}" label=""/>
+                </apex:pageBlockSection>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Back" action="{!cancel}"/>
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:pageBlock>
+        <apex:relatedList list="Contacts" />
     </apex:pageBlock>
 </apex:page>
