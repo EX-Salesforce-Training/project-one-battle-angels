@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>Tracking Number Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Tracking Number Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Package_From_Tracking_Number</name>
+        <label>Package From Tracking Number</label>
+        <locationX>339</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Package_Information</targetReference>
+        </connector>
+        <filters>
+            <field>Tracking_Number__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Tracking_Number</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Package__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>Input_Tracking_Number</name>
+        <label>Input Tracking Number</label>
+        <locationX>189</locationX>
+        <locationY>50</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Package_From_Tracking_Number</targetReference>
+        </connector>
+        <fields>
+            <name>Tracking_Number</name>
+            <dataType>String</dataType>
+            <fieldText>Tracking Number</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Package_Information</name>
+        <label>Package Information</label>
+        <locationX>616</locationX>
+        <locationY>42</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Package_ID</name>
+            <fieldText>&lt;p&gt;Package Number: {!Package_From_Tracking_Number.Id}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Input_Tracking_Number</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+</Flow>
