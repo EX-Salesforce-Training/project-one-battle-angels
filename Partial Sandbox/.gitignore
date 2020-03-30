@@ -6,6 +6,8 @@
 .sfdx/
 .localdevserver/
 force-app\main\default\profiles\
+force-app\main\default\profileSessionSettings
+force-app\main\default\profilePasswordPolicies
 
 # Logs
 logs
