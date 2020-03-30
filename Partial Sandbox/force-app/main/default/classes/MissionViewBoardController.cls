@@ -20,7 +20,7 @@ public class MissionViewBoardController
         {
           user = [SELECT Account.Name, FirstName, LastName 
                   FROM Contact 
-                  WHERE UserName__c =: UserInfo.getUserName()]; 
+                  WHERE User_Name__c =: UserInfo.getUserName()]; 
             
           userAccount = new Account(Id = user.AccountId, Name = user.Account.Name);
         }
