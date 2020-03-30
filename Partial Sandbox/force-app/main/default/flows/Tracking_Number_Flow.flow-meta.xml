@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisions>
+        <name>Check_if_Null_Package_Found</name>
+        <label>Check if Null Package Found</label>
+        <locationX>522</locationX>
+        <locationY>299</locationY>
+        <defaultConnector>
+            <targetReference>Error_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Package_From_Tracking_Number</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Package_Information</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+    </decisions>
     <interviewLabel>Tracking Number Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Tracking Number Flow</label>
     <processMetadataValues>
@@ -18,11 +43,11 @@
     <recordLookups>
         <name>Package_From_Tracking_Number</name>
         <label>Package From Tracking Number</label>
-        <locationX>339</locationX>
-        <locationY>50</locationY>
+        <locationX>222</locationX>
+        <locationY>299</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Package_Information</targetReference>
+            <targetReference>Check_if_Null_Package_Found</targetReference>
         </connector>
         <filters>
             <field>Tracking_Number__c</field>
@@ -35,6 +60,25 @@
         <object>Package__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <screens>
+        <name>Error_Screen</name>
+        <label>Error</label>
+        <locationX>545</locationX>
+        <locationY>21</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Input_Tracking_Number</targetReference>
+        </connector>
+        <fields>
+            <name>Text</name>
+            <fieldText>&lt;p&gt;Error: We Are Unable to Find Package. Please Retry Entering your Tracking Code and researching for your package by going back or hitting next.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <screens>
         <name>Input_Tracking_Number</name>
         <label>Input Tracking Number</label>
@@ -59,8 +103,8 @@
     <screens>
         <name>Package_Information</name>
         <label>Package Information</label>
-        <locationX>616</locationX>
-        <locationY>42</locationY>
+        <locationX>800</locationX>
+        <locationY>50</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -80,4 +124,15 @@
         </connector>
     </start>
     <status>Draft</status>
+    <variables>
+        <description>Value for Checking if Null Package Found</description>
+        <name>ErrorValue</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
 </Flow>
