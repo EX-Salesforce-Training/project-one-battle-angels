@@ -1,5 +1,14 @@
-<apex:page controller="MissionViewBoardController">
-    <p>
+<apex:page controller="MissionViewBoardController" lightningStylesheets="true">
+   	<h1>
         Hello! {!$User.FirstName} {!$User.LastName}
-    </p>
+    </h1>
+    <apex:form >
+        <apex:pageBlock >
+            <p>
+                Enter Tracking Number
+            </p>
+            <apex:inputText value="{! trackingNumber}" label="Tracking Number"/>
+            <apex:commandButton action="{! findPackage}" value="Submit"/>
+        </apex:pageBlock>
+    </apex:form>
 </apex:page>
