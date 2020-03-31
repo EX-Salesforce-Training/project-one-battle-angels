@@ -45,14 +45,11 @@
         <name>Report</name>
     </types>
     <types>
-<<<<<<< HEAD
         <members>Contact</members>
         <name>StandardObject</name>
     </types>  
-=======
         <members>*</members>
         <name>Flow</name>
     </types>     
->>>>>>> 9817ae799eef23803429c0debac2c63f1e761b73
     <version>47.0</version>
 </Package>
