@@ -1,4 +1,4 @@
-<apex:page standardController="Account">
+<apex:page standardController="Account" extensions="AccountRelatedContactsController">
     <apex:form >
         <apex:pageBlock >
             <apex:pageBlockSection title="Company Name">
@@ -23,7 +23,6 @@
                 <apex:pageBlockSection>
                     <apex:outputField value="{!Account.BillingStreet}"/> <br/>
                     <apex:inputField value="{!Account.BillingStreet}" label=""/>
-                    
                     <apex:outputField value="{!Account.BillingCity}"/> <br/>
                     <apex:inputField value="{!Account.BillingCity}" label=""/>
                 </apex:pageBlockSection>
@@ -62,8 +61,17 @@
                 <apex:commandButton value="Save" action="{!save}"/>
             </apex:pageBlockButtons>
         </apex:pageBlock>
+        <apex:pageBlock>
+            <apex:pageBlockTable value="{!contacts}" var="c" rendered="{!NOT(ISNULL(contacts))}">
+                <apex:column>
+                    <apex:commandLink value="Edit" action="{!editContact}" target="_parent"><apex:param value="{!c.id}" name="contactId"/> </apex:commandLink>
+                    &nbsp;|&nbsp;
+                    <apex:commandLink value="Delete" onclick="return confirm('Are you sure?')" action="{!deleteContact}" target="_parent"><apex:param value="{!c.id}" name="contactId"/></apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="Contact Name" value="{!c.Name}"/>
+                <apex:column headerValue="Phone" value="{!c.Phone}"/>
+                <apex:column headerValue="Email" value="{!c.Email}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
     </apex:form>
-    <apex:pageBlock>
-        <apex:relatedList list="Contacts" />
-    </apex:pageBlock>
 </apex:page>
