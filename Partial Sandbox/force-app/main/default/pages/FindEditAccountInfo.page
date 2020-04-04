@@ -4,7 +4,7 @@
 </head>
   <body>
     <div class="heading">
-      <apex:image styleclass= "img" value="{!$Resource.postallogo}"  alt="Postal Logo"/>
+      <apex:image styleclass="img" value="{!$Resource.postallogo}"  alt="Postal Logo"/>
       <h1>United States Postal Service</h1>
     </div>
     <apex:form >
@@ -50,8 +50,8 @@
                 <apex:inputField styleclass="input" value="{!Account.ShippingStreet}" label=""/>
             </apex:pageBlockSection>
             <div class="btn-section">
-              <apex:commandButton  value="Back" action="{!cancel}"/>
-              <apex:commandButton  value="Save" action="{!save}"/>
+              <apex:commandButton value="Back" action="{!cancel}"/>
+              <apex:commandButton value="Save" action="{!save}"/>
             </div>
             </div>
         </apex:pageBlock>

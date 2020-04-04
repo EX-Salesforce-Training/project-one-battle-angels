@@ -3,6 +3,7 @@
 .btn-section{
   display: flex;
   justify-content: center;
+
 }
 
 .form-box{
@@ -21,18 +22,51 @@
   padding-top: 1.2em;
   flex-direction: row;
   background-color: #ededed;
-  
+  border: thin solid #ccc;
+
 }
 
 .heading h1{
   margin-top: 2em;
   margin-left: 33%;
   margin-right: 37%;
+  color: #00365a;
   font-size: 1.5em;
 }
 
+.welcome {
+  display: flex;
+  justify-content: center;
+}
 
+.welcome p{
+  font-size: 1.2em;
+}
 
+.flex-container{
+  display: flex;
+  justify-content: center;
+}
+
+.box{
+  text-align: center;
+  box-sizing: border-box;
+  width: 20em;
+  height: 30em;
+  margin: 1em;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  border: thin solid #ccc;
+  border-radius: .4em;
+}
+
+.box h1{
+  display: inline-block;
+  color: #00365a;
+  font-size: 1.2em;
+}
 
 .input{
   display: inline-block;
