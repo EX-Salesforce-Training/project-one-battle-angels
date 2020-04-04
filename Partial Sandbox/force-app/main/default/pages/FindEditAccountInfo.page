@@ -1,69 +1,63 @@
-<apex:page standardController="Account" extensions="AccountRelatedContactsController">
+<apex:page standardStylesheets="true" applyBodyTag="true" sidebar="false"  standardController="Account" extensions="AccountRelatedContactsController" >
+  <head>
+  <apex:stylesheet value="{!$Resource.style}"/>
+</head>
+  <body>
+    <div class="heading">
+      <apex:image styleclass="img" value="{!$Resource.postallogo}"  alt="Postal Logo"/>
+      <h1>United States Postal Service</h1>
+    </div>
     <apex:form >
         <apex:pageBlock >
-            <apex:pageBlockSection title="Company Name">
-                <apex:outputField value="{!Account.Name}" label="Company Name"/>
-                <apex:inputField value="{!Account.Name}" label=""/>  
+          <div class="form-box">
+            <apex:pageBlockSection title="Company Name" >
+                <apex:outputField value="{!Account.Name}" label=" Name"/>
+                <apex:inputField styleclass="input" value="{!Account.Name}" label=""/> 
             </apex:pageBlockSection>
-            <apex:pageBlockSection title="Contact Information" columns="3">
-                <apex:pageBlockSection>
-                    <apex:outputField value="{!Account.Website}"/> <br/>
-                    <apex:inputField value="{!Account.Website}" label=""/>
-                </apex:pageBlockSection>
-                <apex:pageBlockSection>
-                    <apex:outputField value="{!Account.Phone}"/> <br/>
-                    <apex:inputField value="{!Account.Phone}" label=""/>
-                </apex:pageBlockSection>
-                <apex:pageBlockSection>
-                    <apex:outputField value="{!Account.Fax}"/> <br/>
-                    <apex:inputField value="{!Account.Fax}" label=""/>
-                </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Contact Information" >
+                <apex:outputField value="{!Account.Website}"/> 
+                <apex:inputField styleclass="input" value="{!Account.Website}" label=""/>
+                <apex:outputField value="{!Account.Phone}"/>
+                <apex:inputField styleclass="input" value="{!Account.Phone}" label=""/>
+                <apex:outputField value="{!Account.Fax}"/> 
+                <apex:inputField styleclass="input" value="{!Account.Fax}" label=""/>
             </apex:pageBlockSection>
-            <apex:pageBlockSection title="Billing Address" columns="2">
-                <apex:pageBlockSection>
-                    <apex:outputField value="{!Account.BillingStreet}"/> <br/>
-                    <apex:inputField value="{!Account.BillingStreet}" label=""/>
-                    <apex:outputField value="{!Account.BillingCity}"/> <br/>
-                    <apex:inputField value="{!Account.BillingCity}" label=""/>
-                </apex:pageBlockSection>
-                <apex:pageBlockSection>
-                    <apex:outputField value="{!Account.BillingState}"/> <br/>
-                    <apex:inputField value="{!Account.BillingState}" label=""/>
-                    
-                    <apex:outputField value="{!Account.BillingPostalCode}"/> <br/>
-                    <apex:inputField value="{!Account.BillingPostalCode}" label=""/>
-                    
-                    <apex:outputField value="{!Account.BillingCountry}"/> <br/>
-                    <apex:inputField value="{!Account.BillingCountry}" label=""/>
-                </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Billing Address" >
+                <apex:outputField value="{!Account.BillingCity}"/> 
+                <apex:inputField styleclass="input" value="{!Account.BillingCity}" label=""/>
+                <apex:outputField value="{!Account.BillingState}"/> 
+                <apex:inputField styleclass="input" value="{!Account.BillingState}" label=""/>
+                <apex:outputField value="{!Account.BillingCountry}"/> 
+                <apex:inputField styleclass="input" value="{!Account.BillingCountry}" label=""/>
+                <apex:outputField value="{!Account.BillingPostalCode}"/> 
+                <apex:inputField styleclass="input" value="{!Account.BillingPostalCode}" label=""/>
+                <apex:outputField value="{!Account.BillingStreet}"/> 
+                <apex:inputField styleclass="input" value="{!Account.BillingStreet}" label=""/>
             </apex:pageBlockSection>
-            <apex:pageBlockSection title="Shipping Address" columns="2">
-                <apex:pageBlockSection>
-                    <apex:outputField value="{!Account.ShippingStreet}"/> <br/>
-                    <apex:inputField value="{!Account.ShippingStreet}" label=""/>
-                    
-                    <apex:outputField value="{!Account.ShippingCity}"/> <br/>
-                    <apex:inputField value="{!Account.ShippingCity}" label=""/>
-                </apex:pageBlockSection>
-                <apex:pageBlockSection>
-                    <apex:outputField value="{!Account.ShippingState}"/> <br/>
-                    <apex:inputField value="{!Account.ShippingState}" label=""/>
-                    
-                    <apex:outputField value="{!Account.ShippingPostalCode}"/> <br/>
-                    <apex:inputField value="{!Account.ShippingPostalCode}" label=""/>
-                    
-                    <apex:outputField value="{!Account.ShippingCountry}"/> <br/>
-                    <apex:inputField value="{!Account.ShippingCountry}" label=""/>
-                </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Shipping Address" >
+                <apex:outputField value="{!Account.ShippingCity}"/> 
+                <apex:inputField styleclass="input" value="{!Account.ShippingCity}" label=""/>
+                <apex:outputField value="{!Account.ShippingState}"/> 
+                <apex:inputField styleclass="input" value="{!Account.ShippingState}" label=""/>
+                <apex:outputField value="{!Account.ShippingCountry}"/> 
+                <apex:inputField styleclass="input" value="{!Account.ShippingCountry}" label=""/>
+                <apex:outputField value="{!Account.ShippingPostalCode}"/> 
+                <apex:inputField styleclass="input" value="{!Account.ShippingPostalCode}" label=""/>
+                <apex:outputField value="{!Account.ShippingStreet}"/> 
+                <apex:inputField styleclass="input" value="{!Account.ShippingStreet}" label=""/>
             </apex:pageBlockSection>
-            <apex:pageBlockButtons >
-                <apex:commandButton value="Back" action="{!cancel}"/>
-                <apex:commandButton value="Save" action="{!save}"/>
-            </apex:pageBlockButtons>
+            <div class="btn-section">
+              <apex:commandButton value="Back" action="{!cancel}"/>
+              <apex:commandButton value="Save" action="{!save}"/>
+            </div>
+            </div>
         </apex:pageBlock>
-        <apex:pageBlock>
+        <apex:pageBlock >
             <apex:pageBlockTable value="{!contacts}" var="c" rendered="{!NOT(ISNULL(contacts))}">
-                <apex:column>
+                <apex:column >
                     <apex:commandLink value="Edit" action="{!editContact}" target="_parent"><apex:param value="{!c.id}" name="contactId"/> </apex:commandLink>
                     &nbsp;|&nbsp;
                     <apex:commandLink value="Delete" onclick="return confirm('Are you sure?')" action="{!deleteContact}" target="_parent"><apex:param value="{!c.id}" name="contactId"/></apex:commandLink>
@@ -72,6 +66,8 @@
                 <apex:column headerValue="Phone" value="{!c.Phone}"/>
                 <apex:column headerValue="Email" value="{!c.Email}"/>
             </apex:pageBlockTable>
+            
         </apex:pageBlock>
     </apex:form>
+  </body>
 </apex:page>
