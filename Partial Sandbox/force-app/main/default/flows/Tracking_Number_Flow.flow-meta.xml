@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Submit_Package_For_Refund_Approval</name>
+        <label>Submit Package For Refund Approval</label>
+        <locationX>1232</locationX>
+        <locationY>557</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>Package_From_Tracking_Number.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <decisions>
         <name>Check_if_Null_Package_Found</name>
         <label>Check if Null Package Found</label>
@@ -20,9 +34,56 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Package_Information</targetReference>
+                <targetReference>Missing_Package</targetReference>
             </connector>
             <label>Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Missing_Package</name>
+        <label>Missing Package?</label>
+        <locationX>747</locationX>
+        <locationY>297</locationY>
+        <defaultConnector>
+            <targetReference>Package_Information_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Package_is_Missing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Package_From_Tracking_Number.Shipping_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>MissingVariable</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Package_Information</targetReference>
+            </connector>
+            <label>Package is Missing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Submit_for_Refund_Checkd</name>
+        <label>Submit for Refund?</label>
+        <locationX>1010</locationX>
+        <locationY>556</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Submit_for_Refund</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Submit_Package_For_Refund_Approval</targetReference>
+            </connector>
+            <label>Yes</label>
         </rules>
     </decisions>
     <interviewLabel>Tracking Number Flow {!$Flow.CurrentDateTime}</interviewLabel>
@@ -81,9 +142,9 @@
         <label>Input Tracking Number</label>
         <locationX>189</locationX>
         <locationY>50</locationY>
-        <allowBack>true</allowBack>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
             <targetReference>Package_From_Tracking_Number</targetReference>
         </connector>
@@ -100,15 +161,63 @@
     <screens>
         <name>Package_Information</name>
         <label>Package Information</label>
-        <locationX>800</locationX>
-        <locationY>50</locationY>
+        <locationX>762</locationX>
+        <locationY>547</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Submit_for_Refund_Checkd</targetReference>
+        </connector>
         <fields>
             <name>Package_ID</name>
             <fieldText>&lt;p&gt;Package Number: {!Package_From_Tracking_Number.Id}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Package_Status</name>
+            <fieldText>&lt;p&gt;{!Package_From_Tracking_Number.Shipping_Status__c}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Insurance_Ammount</name>
+            <fieldText>&lt;p&gt;{!Package_From_Tracking_Number.Value__c}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Submit_for_Refund</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Submit for Refund?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Package_Information_0</name>
+        <label>Package Information</label>
+        <locationX>947</locationX>
+        <locationY>142</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Package_ID_0</name>
+            <fieldText>&lt;p&gt;Package Number: {!Package_From_Tracking_Number.Id}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Package_Status_0</name>
+            <fieldText>&lt;p&gt;{!Package_From_Tracking_Number.Shipping_Status__c}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Submit_for_Refund_0</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Submit for Refund?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -130,6 +239,16 @@
         <isOutput>false</isOutput>
         <value>
             <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>MissingVariable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Missing</stringValue>
         </value>
     </variables>
 </Flow>

@@ -44,12 +44,21 @@
         <members>*</members>
         <name>Report</name>
     </types>
-    <types>
-        <members>Contact</members>
-        <name>StandardObject</name>
-    </types>  
+    <types>  
         <members>*</members>
         <name>Flow</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Workflow</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApprovalProcess</name>
     </types>     
     <version>47.0</version>
 </Package>
