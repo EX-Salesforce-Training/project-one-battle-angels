@@ -3,8 +3,8 @@
     <decisions>
         <name>Check_if_Null_Package_Found</name>
         <label>Check if Null Package Found</label>
-        <locationX>522</locationX>
-        <locationY>299</locationY>
+        <locationX>524</locationX>
+        <locationY>298</locationY>
         <defaultConnector>
             <targetReference>Error_Screen</targetReference>
         </defaultConnector>
@@ -63,17 +63,14 @@
     <screens>
         <name>Error_Screen</name>
         <label>Error</label>
-        <locationX>545</locationX>
-        <locationY>21</locationY>
+        <locationX>530</locationX>
+        <locationY>71</locationY>
         <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <connector>
-            <targetReference>Input_Tracking_Number</targetReference>
-        </connector>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
         <fields>
             <name>Text</name>
-            <fieldText>&lt;p&gt;Error: We Are Unable to Find Package. Please Retry Entering your Tracking Code and researching for your package by going back or hitting next.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Error: We Are Unable to Find Package. Please Retry Entering your Tracking Code and researching for your package by going back or finish to end.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -105,9 +102,9 @@
         <label>Package Information</label>
         <locationX>800</locationX>
         <locationY>50</locationY>
-        <allowBack>true</allowBack>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <fields>
             <name>Package_ID</name>
             <fieldText>&lt;p&gt;Package Number: {!Package_From_Tracking_Number.Id}&lt;/p&gt;</fieldText>
