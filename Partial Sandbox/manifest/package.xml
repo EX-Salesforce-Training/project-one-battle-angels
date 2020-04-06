@@ -45,6 +45,9 @@
         <name>Report</name>
     </types>
     <types>
+        <members>Contact</members>
+        <name>StandardObject</name>
+    </types>  
         <members>*</members>
         <name>Flow</name>
     </types>     
