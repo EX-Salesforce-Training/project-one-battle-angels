@@ -1,14 +1,41 @@
-<apex:page controller="MissionViewBoardController" lightningStylesheets="true">
-   	<h1>
-        Hello! {!$User.FirstName} {!$User.LastName}
-    </h1>
+<apex:page controller="MissionViewBoardController" standardStylesheets="true">
+  <head>
+    <apex:stylesheet value="{!$Resource.style}"/>
+  </head>
+  <body>
+    <div class="heading">
+      <apex:image styleclass="img" value="{!$Resource.postallogo}"  alt="Postal Logo"/>
+      <h1>United States Postal Service</h1>
+    </div>
+    <div class="welcome">
+      <p>
+          Hello, {!$User.FirstName} {!$User.LastName}! Welcome to the United States Postal Service Portal. Here are some of things you can do in this community.
+      </p>
+    </div>
+    <div class="flex-container">
+      <div class="box">
+        <apex:image value="{!$Resource.package}"  alt="Postal Logo"/>
+        <h1>Track Packages</h1>
+      </div>
+      <div class="box">
+        <apex:image value="{!$Resource.cartoonpencil}"  alt="Postal Logo"/>
+        <h1>Edit Account Information</h1>
+      </div>
+      <div class="box">
+        <apex:image value="{!$Resource.delivery}"  alt="Postal Logo"/>
+        <h1>View Lists of Outbound Deliveries</h1>
+      </div>
+    </div>
     <apex:form >
         <apex:pageBlock >
-            <p>
+            <span>
                 Enter Tracking Number
-            </p>
-            <apex:inputText value="{! trackingNumber}" label="Tracking Number"/>
+            </span>
+            <apex:inputText styleclass="input" value="{! trackingNumber}" label="Tracking Number"/>
+            <div class="btn-section">
             <apex:commandButton action="{! findPackage}" value="Submit"/>
+            </div>
         </apex:pageBlock>
     </apex:form>
+    </body>
 </apex:page>
