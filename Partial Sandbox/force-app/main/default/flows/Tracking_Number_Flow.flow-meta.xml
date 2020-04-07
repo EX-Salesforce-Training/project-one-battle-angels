@@ -176,12 +176,17 @@
         </fields>
         <fields>
             <name>Package_Status</name>
-            <fieldText>&lt;p&gt;{!Package_From_Tracking_Number.Shipping_Status__c}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Shipping Status: {!Package_From_Tracking_Number.Shipping_Status__c}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Last_Location</name>
+            <fieldText>&lt;p&gt;Last Known Location: {!Package_From_Tracking_Number.Package_Location__c}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>Insurance_Ammount</name>
-            <fieldText>&lt;p&gt;{!Package_From_Tracking_Number.Value__c}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Insurance Cost: {!Package_From_Tracking_Number.Value__c}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -209,15 +214,13 @@
         </fields>
         <fields>
             <name>Package_Status_0</name>
-            <fieldText>&lt;p&gt;{!Package_From_Tracking_Number.Shipping_Status__c}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Shipping Status: {!Package_From_Tracking_Number.Shipping_Status__c}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>Submit_for_Refund_0</name>
-            <dataType>Boolean</dataType>
-            <fieldText>Submit for Refund?</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>true</isRequired>
+            <name>Location</name>
+            <fieldText>&lt;p&gt;Location: {!Package_From_Tracking_Number.Package_Location__c}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
