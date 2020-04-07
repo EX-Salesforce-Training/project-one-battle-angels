@@ -37,5 +37,19 @@
             </div>
         </apex:pageBlock>
     </apex:form>
+    <apex:form >
+      <apex:pageBlock >
+          <apex:selectList value="{!statuses}" size="1"> 
+              <apex:selectOptions value="{!items}"/>
+          </apex:selectList>
+          <apex:commandButton action="{!setPackages}" value="Select" reRender="packageList"/>
+      </apex:pageBlock>
+      <apex:pageBlock id="packageList">
+          <apex:pageBlockTable value="{!packages}" var="package">
+              <apex:column value="{!package.Tracking_Number__c}"/>
+              <apex:column value="{!package.Shipping_Status__c}"/>
+          </apex:pageBlockTable>
+      </apex:pageBlock>
+      </apex:form>
     </body>
 </apex:page>
