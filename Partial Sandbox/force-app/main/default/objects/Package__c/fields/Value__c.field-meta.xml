@@ -6,7 +6,7 @@
     <inlineHelpText>Monetary value of package. Important for insurance purposes.</inlineHelpText>
     <label>Value</label>
     <precision>7</precision>
-    <required>false</required>
+    <required>true</required>
     <scale>2</scale>
     <trackTrending>false</trackTrending>
     <type>Currency</type>
