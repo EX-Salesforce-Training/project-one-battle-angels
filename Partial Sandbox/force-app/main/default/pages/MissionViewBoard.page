@@ -33,7 +33,7 @@
       </div>
      <apex:pageBlock >
          <apex:outputLink value="{! editAccount}">
-             {!IF(!ISNULL(userAccount),"{! userAccount.Name}","No Accounts found")}
+             {!IF(!ISNULL(userAccount),userAccount.Name,"No Accounts found")}
          </apex:outputLink>
       </apex:pageBlock> 
     <div class="info">
