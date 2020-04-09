@@ -1,6 +1,6 @@
 <apex:page standardController="Contact" extensions="ContactInfoRedirect">
-    <apex:form>
-        <apex:pageBlock>
+    <apex:form >
+        <apex:pageBlock >
             <apex:pageBlockSection title="Name" columns="2">
                 <apex:outputField value="{!Contact.firstName}"/>
                 <apex:inputField value="{!Contact.firstName}" label=""/>
@@ -8,27 +8,27 @@
                 <apex:inputField value="{!Contact.lastName}" label=""/>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Contact Information" columns="3">
-                <apex:pageBlockSection>
+                <apex:pageBlockSection >
                     <apex:outputField value="{!Contact.Email}"/> <br/>
                     <apex:inputField value="{!Contact.Email}" label=""/>
                 </apex:pageBlockSection>
-                <apex:pageBlockSection>
+                <apex:pageBlockSection >
                     <apex:outputField value="{!Contact.Phone}"/> <br/>
                     <apex:inputField value="{!Contact.Phone}" label=""/>
                 </apex:pageBlockSection>
-                <apex:pageBlockSection>
+                <apex:pageBlockSection >
                     <apex:outputField value="{!Contact.Fax}"/> <br/>
                     <apex:inputField value="{!Contact.Fax}" label=""/>
                 </apex:pageBlockSection>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Mailing Address" columns="2">
-                <apex:pageBlockSection>
+                <apex:pageBlockSection >
                     <apex:outputField value="{!Contact.MailingStreet}"/> <br/>
                     <apex:inputField value="{!Contact.MailingStreet}" label=""/>
                     <apex:outputField value="{!Contact.MailingCity}"/> <br/>
                     <apex:inputField value="{!Contact.MailingCity}" label=""/>
                 </apex:pageBlockSection>
-                <apex:pageBlockSection>
+                <apex:pageBlockSection >
                     <apex:outputField value="{!Contact.MailingState}"/> <br/>
                     <apex:inputField value="{!Contact.MailingState}" label=""/>
                     
