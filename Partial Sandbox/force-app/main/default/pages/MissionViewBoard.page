@@ -26,6 +26,7 @@
         <h1>View Lists of Outbound Deliveries</h1>
       </div>
     </div>
+    <!--
     <apex:form >
         <apex:pageBlock >
             <span>
@@ -37,6 +38,7 @@
             </div>
         </apex:pageBlock>
     </apex:form>
+  -->
     <apex:form >
       <apex:pageBlock >
           <apex:selectList value="{!statuses}" size="1"> 
