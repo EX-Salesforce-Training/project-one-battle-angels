@@ -1,4 +1,4 @@
-public with sharing class AccountRelatedContactsController {
+public class AccountRelatedContactsController {
     public List<Contact> contacts {get;set;}
     public Account acc {get;set;}
 
