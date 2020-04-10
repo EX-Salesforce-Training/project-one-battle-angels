@@ -43,9 +43,7 @@
       </div>
     <apex:form >
       <apex:pageBlock >
-          <apex:selectList value="{!statuses}" size="1"> 
-              <apex:selectOptions value="{!items}"/>
-          </apex:selectList>
+          <apex:inputField value="{! initPackage.Shipping_Status__c}"/>
           <apex:commandButton action="{!setPackages}" value="Select" reRender="packageList"/>
       </apex:pageBlock>
       <apex:pageBlock id="packageList">

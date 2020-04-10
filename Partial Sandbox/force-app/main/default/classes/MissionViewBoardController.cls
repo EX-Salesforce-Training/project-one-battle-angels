@@ -6,7 +6,7 @@ public class MissionViewBoardController
     public Account userAccount {get; set;}  
     public String trackingNumber {get; set;}
     String error {get; set;}
-    List<SelectOption> options {get; set;}
+    public Package__c initPackage {get; set;}
     List<Inhabitant__c> residents {get; set;}
     public PageReference editAccount{get
     {
@@ -24,20 +24,6 @@ public class MissionViewBoardController
         }
         return editAccount;
     }set;}
-    public List<String> statuses {get
-    {
-        if(statuses == null)
-        {
-            statuses = new List<String>();
-        	Schema.DescribeFieldResult statusPickList = Package__c.Shipping_Status__c.getDescribe();
-        	List<Schema.PicklistEntry> ple = statusPickList.getPicklistValues();
-        	for(Schema.PicklistEntry pickListVal : ple)
-        	{
-            	statuses.add(pickListVal.getLabel());
-        	}   
-        }
-        return statuses;
-    } set;}
     public List<Package__c> packages {get
     {
         if(packages == null && userContact != null) 
@@ -72,21 +58,12 @@ public class MissionViewBoardController
 			error = e.getMessage();            
         } 
     }
-    //Action method to display our statuses on the MissionViewBoard visualforcepage. 
-    public List<SelectOption> getItems()
-    {
-        options = new List<SelectOption>();
-        for(String status : statuses)
-        {
-            options.add(new SelectOption(status,status));
-        }
-        return options;
-    }
     //Action method for allowing filtering of packages by status on the 
     //MissionViewBoard visualforcepage.
     public void setPackages()
     {
-        packages = [SELECT Shipping_Status__c, Tracking_Number__c FROM Package__c 
-                    WHERE (Inhabitant__r.Id IN :residents) AND Shipping_Status__c LIKE :statuses];
+        packages = [SELECT Shipping_Status__c, Tracking_Number__c 
+                        FROM Package__c 
+                        WHERE (Inhabitant__r.Id IN :residents) AND (Shipping_Status__c LIKE :initPackage.Shipping_Status__c)];
     }    
 }
