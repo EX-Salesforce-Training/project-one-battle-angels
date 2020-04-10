@@ -1,3 +1,22 @@
-<apex:page >
-    <flow:interview name="Tracking_Number_Flow"/>
+<apex:page standardStylesheets="true">
+  <head>
+    <apex:stylesheet value="{!$Resource.style}"/>
+  </head>
+  <body>
+    <div class="heading">
+      <apex:image styleclass="img" value="{!$Resource.postallogo}"  alt="Postal Logo"/>
+      <h1>United States Postal Service</h1>
+    </div>
+    <div class="flex-container">
+      <div class="box">
+        <apex:image value="{!$Resource.tracking}"  alt="Postal Logo"/>
+        <div class="welcome">
+          <p>
+              Enter Tracking Number Below to View Package Location
+          </p>
+        </div>
+      </div>
+    </div>
+    <flow:interview name="Tracking_Number_Flow" buttonLocation="bottom"/>
+  </body>
 </apex:page>

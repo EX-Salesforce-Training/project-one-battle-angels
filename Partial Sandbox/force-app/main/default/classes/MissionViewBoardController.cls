@@ -24,20 +24,7 @@ public class MissionViewBoardController
         }
         return editAccount;
     }set;}
-    public String status {/*get
-    {
-        if(statuses == null)
-        {
-            statuses = new List<String>();
-        	Schema.DescribeFieldResult statusPickList = Package__c.Shipping_Status__c.getDescribe();
-        	List<Schema.PicklistEntry> ple = statusPickList.getPicklistValues();
-        	for(Schema.PicklistEntry pickListVal : ple)
-        	{
-            	statuses.add(pickListVal.getLabel());
-        	}   
-        }
-        return statuses;
-    }*/get; set;}
+    public String status {get; set;}
     public List<Package__c> packages {get
     {
         if(packages == null && userContact != null) 
