@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipped_Packages</fullName>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Shipping_Status__c</field>
+        <operation>equals</operation>
+        <value>In Transit,Out for Delivery</value>
+    </filters>
+    <label>Shipped Packages</label>
+</ListView>

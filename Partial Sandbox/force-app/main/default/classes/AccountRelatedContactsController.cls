@@ -1,4 +1,4 @@
-public with sharing class AccountRelatedContactsController {
+public class AccountRelatedContactsController {
     public List<Contact> contacts {get;set;}
     public Account acc {get;set;}
 
@@ -22,5 +22,8 @@ public with sharing class AccountRelatedContactsController {
             return currentPage;
         }
         return null;
+    }
+    public PageReference cancel() {
+        return new PageReference(URL.getSalesforceBaseUrl().toExternalForm() + '/apex/MissionViewBoard');
     }
 }

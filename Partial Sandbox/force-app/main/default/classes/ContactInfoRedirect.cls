@@ -1,4 +1,4 @@
-public with sharing class ContactInfoRedirect {
+public class ContactInfoRedirect {
     public Contact c {get;set;}
     public Contact cId {get;set;}
     public ContactInfoRedirect(ApexPages.StandardController controller) {
