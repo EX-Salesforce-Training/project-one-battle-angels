@@ -87,6 +87,7 @@
         </rules>
     </decisions>
     <interviewLabel>Tracking Number Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <isAdditionalPermissionRequiredToRun>true</isAdditionalPermissionRequiredToRun>
     <label>Tracking Number Flow</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -232,7 +233,7 @@
             <targetReference>Input_Tracking_Number</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <description>Value for Checking if Null Package Found</description>
         <name>ErrorValue</name>

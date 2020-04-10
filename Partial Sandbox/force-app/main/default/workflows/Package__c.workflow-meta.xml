@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Send_Email_to_Owner</fullName>
+        <description>Send Email to Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/USPS_Letterhead</template>
+    </alerts>
     <fieldUpdates>
         <fullName>Payout_Approved</fullName>
         <field>Payout_Approved__c</field>
@@ -53,7 +63,11 @@
     </rules>
     <rules>
         <fullName>Package went missing</fullName>
-        <active>false</active>
+        <actions>
+            <name>Send_Email_to_Owner</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
         <criteriaItems>
             <field>Package__c.Shipping_Status__c</field>
             <operation>equals</operation>
