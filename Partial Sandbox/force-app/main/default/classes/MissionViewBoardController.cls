@@ -1,86 +1,94 @@
 public class MissionViewBoardController 
 {
-    public Account contactAccount {get; set;} //The Property for displaying the current User's Account.
-    public Contact contactUser { get; set;}	//The Property for displaying the current User's info. 
-    public String trackingNumber {get; set;}//A property for the user to search for a tracking number.
-    String error {get; set;}//To display an error message to the user if their account doesn't exist. 
-    List<SelectOption> options {get; set;}//This property is used to display the status options.
-    List<Inhabitant__c> residents {get; set;}//This Properpty is used to gather all packages sent to the contact, regardless of address.
-    public List<String> packageStatusList {get; set;}
-    //This property is used for displaying the statuses on 
-    //the MissionViewBoard visualforcepage. 
-    public List<String> statuses {get
+    /*** Properties ***/
+    public User currentUser {get; set;}
+    public Contact userContact {get; set;}
+    public Account userAccount {get; set;}  
+    public String trackingNumber {get; set;}
+    String error {get; set;}
+    List<SelectOption> options {get; set;}
+    List<Inhabitant__c> residents {get; set;}
+    public PageReference editAccount{get
+    {
+        if(editAccount == null)
+        {
+            if(userAccount != null)
+        	{
+            	//editAccount = new ApexPages.StandardController(userAccount).edit();
+                editAccount = new PageReference(URL.getSalesforceBaseUrl().toExternalForm() + '/apex/FindEditAccountInfo?id=' +  userAccount.Id);
+        	}
+       	 	else
+        	{
+            	editAccount = ApexPages.currentPage();
+        	}         
+        }
+        return editAccount;
+    }set;}
+    public String status {/*get
     {
         if(statuses == null)
         {
-            packageStatusList = new List<String>();
+            statuses = new List<String>();
         	Schema.DescribeFieldResult statusPickList = Package__c.Shipping_Status__c.getDescribe();
         	List<Schema.PicklistEntry> ple = statusPickList.getPicklistValues();
         	for(Schema.PicklistEntry pickListVal : ple)
         	{
-            	packageStatusList.add(pickListVal.getLabel());
+            	statuses.add(pickListVal.getLabel());
         	}   
         }
-        return packageStatusList;
-    } set;}
-    //This Property is used for displaying all the packages associated with
-    //the current user on the MissionViewBoard visualforcepage. 
+        return statuses;
+    }*/get; set;}
     public List<Package__c> packages {get
     {
-        if(packages == null && contactUser != null) 
+        if(packages == null && userContact != null) 
         {
             residents = [SELECT Id, Contact__r.Id 
                          FROM Inhabitant__c 
-                         WHERE Contact__r.Id =: contactUser.Id];
+                         WHERE Contact__r.Id =: userContact.Id];
             packages = [SELECT Shipping_Status__c, Tracking_Number__c 
                         FROM Package__c 
                         WHERE Inhabitant__r.Id IN :residents];
         }
         return packages;
     }set;}
-	//Constructor
+	/*** Constructors ***/
 	public MissionViewBoardController()
-    {   
+    {           
         try
         {
-          contactUser = [SELECT Account.Name, AccountId, FirstName, LastName 
+          currentUser = [SELECT ID, ContactId FROM User WHERE Id =: UserInfo.getUserId()];  
+          userContact = [SELECT Account.Name, AccountId, FirstName, LastName 
                          FROM Contact 
-                         WHERE User_Name__c =: UserInfo.getUserName()]; 
+                         WHERE Id =: currentUser.ContactId]; 
             
-           if(contactUser.AccountId != null )
+           if(userContact.AccountId != null )
            {
-                contactAccount = new Account(Id = contactUser.AccountId, Name = contactUser.Account.Name); 
+                userAccount = new Account(Id = userContact.AccountId, Name = userContact.Account.Name); 
            }
         }
         catch(System.QueryException e)
         {
-            contactUser = null;
+            userContact = null;
 			error = e.getMessage();            
         } 
     }
     //Action method to display our statuses on the MissionViewBoard visualforcepage. 
     public List<SelectOption> getItems()
     {
-        options = new List<SelectOption>();
-        for(String status : statuses)
-        {
-            options.add(new SelectOption(status,status));
-        }
+        options = new List<SelectOption>{new SelectOption('All', 'All'), new SelectOption('Shipping', 'Shipping'), new SelectOption('Delivered', 'Delivered')};
         return options;
     }
     //Action method for allowing filtering of packages by status on the 
     //MissionViewBoard visualforcepage.
     public void setPackages()
     {
+        List<String> statuses;
+        switch on status {
+            when 'All' {statuses = new List<String>{'Missing', 'Delivered', 'Out for Delivery', 'In Transit', 'Waiting for Pickup'};}
+            when 'Shipping' {statuses = new List<String>{'Out for Delivery', 'In Transit', 'Waiting for Pickup'};}
+            when 'Delivered' {statuses = new List<String>{'Delivered'};}
+        }
         packages = [SELECT Shipping_Status__c, Tracking_Number__c FROM Package__c 
-                    WHERE (Inhabitant__r.Id IN :residents) AND Shipping_Status__c LIKE :statuses];
+                    WHERE (Inhabitant__r.Id IN :residents) AND Shipping_Status__c IN :statuses LIMIT 20];
     }    
-    public PageReference findPackage()
-    {
-        PageReference packageDetails = new PageReference('');
-        
-        Package__c pck = [SELECT Id FROM Package__c WHERE Tracking_Number__c =: trackingNumber LIMIT 1];
-        
-        return packageDetails;
-    }
 }

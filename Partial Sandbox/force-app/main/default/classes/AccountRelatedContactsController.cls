@@ -23,4 +23,7 @@ public class AccountRelatedContactsController {
         }
         return null;
     }
+    public PageReference cancel() {
+        return new PageReference(URL.getSalesforceBaseUrl().toExternalForm() + '/apex/MissionViewBoard');
+    }
 }
